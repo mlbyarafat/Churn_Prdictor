@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>User Churn Predictor</title>
+  <style>
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f3f1ec; /* very soft warm gray */
+      color: #3b3a36; /* dark gray, not pure black */
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .container {
+      background: #fff;
+      color: #3b3a36;
+      max-width: 480px;
+      width: 100%;
+      border-radius: 12px;
+      padding: 30px 40px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      border: 1px solid #dedbd6;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #6b5b4e; /* muted warm brown */
+    }
+    form {
+      margin-bottom: 30px;
+    }
+    input[type="file"] {
+      display: block;
+      margin: 0 auto 25px auto;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 10px 8px;
+      width: 100%;
+      border: 2px solid #c7b89e;
+      border-radius: 8px;
+      background-color: #f9f7f3;
+      transition: border-color 0.3s ease;
+      color: #6b5b4e;
+    }
+    input[type="file"]:hover {
+      border-color: #a3927d;
+    }
+    input[type="submit"] {
+      background: #a3927d;
+      border: none;
+      padding: 14px 25px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 10px;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      width: 100%;
+      box-shadow: 0 4px 8px rgba(163,146,125,0.4);
+    }
+    input[type="submit"]:hover {
+      background: #8c7f6a;
+      box-shadow: 0 6px 12px rgba(140,127,106,0.6);
+    }
+    /* Results */
+    .results {
+      text-align: left;
+      max-height: 200px;
+      overflow-y: auto;
+      border-top: 1px solid #dedbd6;
+      padding-top: 15px;
+    }
+    .results h2 {
+      color: #a3927d;
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+    .results ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+    .results li {
+      background: #f9f7f3;
+      color: #3b3a36;
+      margin-bottom: 8px;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-weight: 600;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Responsive */
+    @media (max-width: 520px) {
+      .container {
+        padding: 25px 20px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><b>Upload CSV to Predict Churn</b></h1>
+    <form method="POST" enctype="multipart/form-data" novalidate>
+      <input type="file" name="file" accept=".csv" required />
+      <input type="submit" value="Predict" />
+    </form>
+    {% if results %}
+    <div class="results">
+      <h2>Prediction Results</h2>
+      <ul>
+        {% for result in results %}
+        <li>{{ result }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
