@@ -76,7 +76,7 @@ We use the [Telco Customer Churn dataset](https://www.kaggle.com/datasets/blastc
 ---
 
 ## 👨‍💻 Author
-**Md Arafat** — [GitHub Profile](https://github.com/mdarafatrealworld01)
+**Md Arafat** — [GitHub Profile](https://github.com/mlbyarafat)
 
 ---
 
